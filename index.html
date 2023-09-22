@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-code Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">    
+</head>
+<body>
+    <!-- container to center a div -->
+    <div class="container">
+
+        <!-- Here contain all -->
+        <div class="main-container">
+
+            <p>Enter your text or URL</p>
+            
+            <input type="text" placeholder="Text or URL" id="qrText">
+
+            <div id="imgBox">
+                <img src="" id="qrImage" alt="">
+            </div>
+            <button onclick="generateQR()">Generate QR code</button>
+            <footer>Made with Love❤️</footer>
+        </div>
+    </div>
+
+    <script>
+        let imgBox=document.getElementById("imgBox");
+        let qrImage=document.getElementById("qrImage");
+        let qrText= document.getElementById("qrText");
+        function generateQR(){
+           if(qrText.value.length>0){
+
+            qrImage.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+qrText.value
+            imgBox.classList.add("show-img");
+           }
+           else{
+            qrText.classList.add("error");
+            setTimeout(function(){
+                qrText.classList.remove("error");
+            },1000);
+           }
+            
+        }
+
+    </script>
+</body>
+</html>
